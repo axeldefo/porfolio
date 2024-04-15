@@ -78,3 +78,6 @@ Authorization : Bearer {{AccsToken}}
 DELETE http://localhost:3000/projets/1
 Content-Type: application/json
 Authorization :  Bearer {{AccsToken}}
+
+#Parcours
+
