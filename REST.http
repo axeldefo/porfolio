@@ -1,3 +1,6 @@
+#Authentification
+@AccsToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzEzMTgzNTIyLCJleHAiOjE3MTMxODcxMjJ9.TbCOGQSjoqtkK2bWALgsw7eQ3hviRoLyeJ9kDyj7JD8
+
 POST http://localhost:3000/auth/register
 Content-Type: application/json
 
@@ -16,10 +19,62 @@ Content-Type: application/json
   "email": "john.doe@example.com",
   "password": "password123"
 }
-
 ###
+
 GET http://localhost:3000/auth/profile
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzEzMTcwNDY1LCJleHAiOjE3MTMxNzQwNjV9.kKVQ0rKpLRjkzv4guK_pwVlyJmeGpaOJdSjUJR1ty7k
+Authorization: Bearer {{AccsToken}}
 ###
 
+GET  http://localhost:3000/auth/logout
+Content-Type: application/json
+Authorization: Bearer {{AccsToken}}
+###
+
+# projets crud
+
+GET http://localhost:3000/projets
+Content-Type: application/json
+Authorization : Bearer {{ AccsToken }}
+###
+
+GET http://localhost:3000/projets/1
+Content-Type: application/json
+Authorization : Bearer {{ AccsToken }}
+###
+
+POST http://localhost:3000/projets
+Content-Type: application/json
+Authorization: Bearer {{AccsToken}}
+
+{
+  "titre": "Application de gestion de tâches",
+  "descriptionIntro": "Une application web pour la gestion efficace des tâches quotidiennes.",
+  "descriptionComplete": "Cette application permet aux utilisateurs de créer, organiser et suivre leurs tâches quotidiennes de manière simple et efficace.",
+  "motsCles": ["gestion de tâches", "productivité", "web"],
+  "thumbnail": "https://example.com/thumbnail.jpg",
+  "imagesIllustration": ["https://example.com/image1.jpg", "https://example.com/image2.jpg"],
+  "technologies": ["Node.js", "React", "MongoDB"],
+  "pourcentage": 75
+}
+###
+
+PUT http://localhost:3000/projets/
+Content-Type: application/json
+Authorization : Bearer {{AccsToken}}
+
+{
+  "titre": "Application de gestion de tâches",
+  "descriptionIntro": "Une application web pour la gestion efficace des tâches quotidiennes.",
+  "descriptionComplete": "Cette application permet aux utilisateurs de créer, organiser et suivre leurs tâches quotidiennes de manière simple et efficace.",
+  "motsCles": ["gestion de tâches", "productivité", "web"],
+  "thumbnail": "https://example.com/thumbnail.jpg",
+  "imagesIllustration": ["https://example.com/image1.jpg", "https://example.com/image2.jpg"],
+  "technologies": ["Node.js", "React", "MongoDB"],
+  "pourcentage": 100 
+}
+###
+
+DELETE http://localhost:3000/projets/1
+Content-Type: application/json
+Authorization :  Bearer {{AccsToken}}

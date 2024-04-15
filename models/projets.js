@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const projetsSchema = new mongoose.Schema({
+  num: {
+    type: Number,
+    required: true,
+    unique: true,
+  },
   titre: {
     type: String,
     required: true

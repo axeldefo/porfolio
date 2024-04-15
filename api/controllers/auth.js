@@ -94,7 +94,11 @@ exports.refresh = async (req, res) => {
 
 exports.logout = async (req, res) => {
   try {
+    console.log(req.headers);
     debug('Logging out user');
+    // Destroy the access token here
+    req.headers['authorization'] = null;
+    console.log(req.headers);
     return res.status(200).json({ message: 'Logged out successfully' });
   } catch (error) {
     debug('Logout failed:', error);

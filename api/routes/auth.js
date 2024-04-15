@@ -7,7 +7,7 @@ var authWithToken = require('../middlewares/authWithToken.js');
 //authentification
 router.post('/register', auth.register);
 router.post('/login', auth.login);
-router.get('/logout', auth.logout);
+router.get('/logout', authWithToken, auth.logout);
 
 //profile
 router.get('/profile', authWithToken, auth.profile);

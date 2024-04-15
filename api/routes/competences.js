@@ -5,7 +5,9 @@ const competences = require('../controllers/competences.js');
 
 router.route('/')
   .get(authWithJWT, competences.getCompetences)
-  .post(authWithJWT, competences.createCompetence)
+  .post(authWithJWT, competences.createCompetence);
+
+router.route('/:num')
   .put(authWithJWT, competences.updateCompetence)
   .delete(authWithJWT, competences.deleteCompetence);
 

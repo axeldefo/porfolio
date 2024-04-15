@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const moiSchema = new mongoose.Schema({
+  num : {
+    type: Number,
+    required: true,
+    unique: true
+  },
   nom: {
     type: String,
     required: true

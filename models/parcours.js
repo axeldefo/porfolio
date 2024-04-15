@@ -8,6 +8,11 @@ const acquis = new mongoose.Schema({
 });
 
 const ParcoursSchema = new mongoose.Schema({
+  num: {
+    type: Number,
+    required: true,
+    unique: true
+  },
   dateDebut: {
     type: Date,
     required: true

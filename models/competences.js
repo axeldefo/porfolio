@@ -14,6 +14,11 @@ const ElementsSchema = new mongoose.Schema({
 });
 
 const CompetencesSchema = new mongoose.Schema({
+  num : {
+    type: Number,
+    required: true,
+    unique: true
+  },
   titre: {
     type: String,
     required: true,
