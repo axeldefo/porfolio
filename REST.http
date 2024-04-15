@@ -1,0 +1,25 @@
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+  {
+    "nom": "John Doe",
+    "email": "john.doe@example.com",
+    "password": "password123"
+  }
+###
+
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "nom": "John Doe",
+  "email": "john.doe@example.com",
+  "password": "password123"
+}
+
+###
+GET http://localhost:3000/auth/profile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzEzMTcwNDY1LCJleHAiOjE3MTMxNzQwNjV9.kKVQ0rKpLRjkzv4guK_pwVlyJmeGpaOJdSjUJR1ty7k
+###
+
