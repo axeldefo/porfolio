@@ -1,5 +1,5 @@
 #Authentification
-@AccsToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzEzMTgzNTIyLCJleHAiOjE3MTMxODcxMjJ9.TbCOGQSjoqtkK2bWALgsw7eQ3hviRoLyeJ9kDyj7JD8
+@AccsToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzEzNTE0MTA2LCJleHAiOjE3MTM1MTc3MDZ9.6MnD28HaRwkDitHY7sszXuemZUOZcaWdO6Il1VNnOAg
 
 POST http://localhost:3000/auth/register
 Content-Type: application/json
@@ -15,7 +15,6 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-  "nom": "John Doe",
   "email": "john.doe@example.com",
   "password": "password123"
 }
@@ -35,12 +34,10 @@ Authorization: Bearer {{AccsToken}}
 
 GET http://localhost:3000/projets
 Content-Type: application/json
-Authorization : Bearer {{ AccsToken }}
 ###
 
-GET http://localhost:3000/projets/1
+GET http://localhost:3000/projets/3
 Content-Type: application/json
-Authorization : Bearer {{ AccsToken }}
 ###
 
 POST http://localhost:3000/projets
@@ -48,14 +45,15 @@ Content-Type: application/json
 Authorization: Bearer {{AccsToken}}
 
 {
-  "titre": "Application de gestion de tâches",
-  "descriptionIntro": "Une application web pour la gestion efficace des tâches quotidiennes.",
+  "titre": "Le vrai Projet",
+  "descriptionIntro": "Un vrai projet avec de vraies images.",
   "descriptionComplete": "Cette application permet aux utilisateurs de créer, organiser et suivre leurs tâches quotidiennes de manière simple et efficace.",
   "motsCles": ["gestion de tâches", "productivité", "web"],
-  "thumbnail": "https://example.com/thumbnail.jpg",
-  "imagesIllustration": ["https://example.com/image1.jpg", "https://example.com/image2.jpg"],
+  "thumbnail": "https://img.freepik.com/free-psd/evangelist-youtube-thumbnail-template-design_23-2149616668.jpg?t=st=1713397514~exp=1713401114~hmac=75208b1bf16a073f72f3aeb2938b5d6a687553dcd4575f993d1e47912ffaa8e0&w=996",
+  "imagesIllustration": [ "https://img.freepik.com/free-psd/flat-design-fashion-concept-landing-page_23-2150310203.jpg?t=st=1713514079~exp=1713517679~hmac=c16fe158971c7278177a553b56df7fcaa9a67f6b62095c3b881f8ea2b6064424&w=996", "https://img.freepik.com/free-vector/gradient-e-commerce-website-template_23-2149546567.jpg?t=st=1713514058~exp=1713517658~hmac=bcfd068e072fd02cde1cb2a12836ce1c79049297b42fd8e61c64d5013d98e2f2&w=996", "https://img.freepik.com/free-psd/movement-web-design-template_23-2149195656.jpg?t=st=1713514015~exp=1713517615~hmac=75e4ff88e3cd4762436f78c0b12eb1825e6e1a76f4c16ee89b6de03660abaaeb&w=1800", "https://img.freepik.com/free-psd/flat-design-padel-lessons-template_23-2149282711.jpg?t=st=1713513980~exp=1713517580~hmac=36cec70600f919b2eb08d98d3f6b190b69552744aeb11e817a9ab8cfddec1550&w=996"],
   "technologies": ["Node.js", "React", "MongoDB"],
-  "pourcentage": 75
+  "annee": 2025,
+  "pourcentage": 100
 }
 ###
 
@@ -64,27 +62,37 @@ Content-Type: application/json
 Authorization : Bearer {{AccsToken}}
 
 {
+  "num": 3,
   "titre": "Application de gestion de tâches",
   "descriptionIntro": "Une application web pour la gestion efficace des tâches quotidiennes.",
   "descriptionComplete": "Cette application permet aux utilisateurs de créer, organiser et suivre leurs tâches quotidiennes de manière simple et efficace.",
   "motsCles": ["gestion de tâches", "productivité", "web"],
-  "thumbnail": "https://example.com/thumbnail.jpg",
+  "thumbnail": "https://img.freepik.com/free-vector/crowdfunding-app-mobile-phone-interface_23-2148620928.jpg?t=st=1713397595~exp=1713401195~hmac=8964494f1be8c1648c6ba43f1e8a537d439e0d49272445aa0278f9b8ead7b7b1&w=826",
   "imagesIllustration": ["https://example.com/image1.jpg", "https://example.com/image2.jpg"],
   "technologies": ["Node.js", "React", "MongoDB"],
-  "pourcentage": 100 
+  "annee": 2025,
+  "pourcentage": 10 
 }
 ###
 
-DELETE http://localhost:3000/projets/1
+DELETE http://localhost:3000/projets/2
 Content-Type: application/json
 Authorization :  Bearer {{AccsToken}}
-
 ###
+
+GET http://localhost:3000/projets/stats/all
+Content-Type: application/json
+Authorization: Bearer {{AccsToken}}
+###
+
 #Parcours
 
 GET http://localhost:3000/parcours
 Content-Type: application/json
-Authorization :  Bearer {{AccsToken}}
+###
+
+GET http://localhost:3000/parcours/2
+Content-Type: application/json
 ###
 
 POST http://localhost:3000/parcours
@@ -92,5 +100,132 @@ Content-Type: application/json
 Authorization :  Bearer {{AccsToken}}
 
 {
-  
+  "dateDebut": "2022",
+  "dateFin": "2023",
+  "titre": "Développeur Web Full-stack",
+  "description": "Formation intensive en développement web full-stack, incluant JavaScript, Node.js, React, et MongoDB.",
+  "entreprise" : "Ensim",
+  "lieu": "École de Développement Web",
+  "type": "Formation",
+  "acquis": [
+    { "nom": "Maîtrise de JavaScript" },
+    { "nom": "Connaissance approfondie de React" },
+    { "nom": "Expérience avec MongoDB" }
+  ],
+  "logo": "https://example.com/logo.png"
 }
+###
+
+PUT http://localhost:3000/parcours
+Content-Type: application/json
+Authorization :  Bearer {{AccsToken}}
+
+{
+  "num": 1,
+  "dateDebut": "2022",
+  "dateFin": "2024",
+  "titre": "Développeur Web Full-stack",
+  "description": "Formation intensive en développement web full-stack, incluant JavaScript, Node.js, React, et MongoDB.",
+  "entreprise" : "world",
+  "lieu": "École de Développement Web",
+  "type": "Formation",
+  "acquis": [
+    { "nom": "Maîtrise de Rien du tout" },
+    { "nom": "Connaissance approfondie de React" },
+    { "nom": "Expérience avec MongoDB" }
+  ],
+  "logo": "https://example.com/logo.png"
+}
+###
+
+DELETE http://localhost:3000/parcours/4
+Content-Type: application/json
+Authorization :  Bearer {{AccsToken}}
+###
+
+#competences
+
+GET http://localhost:3000/competences
+Content-Type: application/json
+###
+
+POST http://localhost:3000/competences
+Content-Type: application/json
+Authorization :  Bearer {{AccsToken}}
+
+{
+  "titre": "Développement Web",
+  "elements": [
+    { "nom": "HTML", "niveau": "Avancé" },
+    { "nom": "CSS", "niveau": "Intermédiaire" },
+    { "nom": "JavaScript", "niveau": "Débutant" },
+    { "nom": "React", "niveau": "Intermédiaire" }
+  ]
+}
+###
+
+PUT  http://localhost:3000/competences
+Content-Type: application/json
+Authorization :  Bearer {{AccsToken}}
+
+{
+  "num": 1,
+  "titre": "Développement flex",
+  "elements": [
+    { "nom": "HTML", "niveau": "Avancé" },
+    { "nom": "CSS", "niveau": "Intermédiaire" },
+    { "nom": "JavaScript", "niveau": "Débutant" },
+    { "nom": "React", "niveau": "Intermédiaire" }
+  ]
+}
+###
+
+DELETE http://localhost:3000/competences/1
+Content-Type: application/json
+Authorization :  Bearer {{AccsToken}}
+###
+
+#à propos de moi
+
+GET  http://localhost:3000/moi
+Content-Type: application/json
+Authorization :  Bearer {{AccsToken}}
+###
+
+GET  http://localhost:3000/moi/1
+Content-Type: application/json
+###
+
+POST http://localhost:3000/moi
+Content-Type: application/json
+Authorization :  Bearer {{AccsToken}}
+
+{
+  "nom": "John Doe",
+  "salutation": "Développeur Fullstack",
+  "description": "Passionné par le développement web et les technologies émergentes.",
+  "linkedin": "https://www.linkedin.com/in/johndoe",
+  "github": "https://github.com/johndoe",
+  "email": "johndoe@example.com"
+}
+###
+
+PUT http://localhost:3000/moi
+Content-Type: application/json
+Authorization :  Bearer {{AccsToken}}
+
+{
+  "num":1,
+  "nom": "John Doe",
+  "salutation": "Elève ingénieur en informatique",
+  "description": "Passionné par le développement, le design et les technologies émergentes, je suis constamment à la recherche de nouvelles façons d'innover et de créer des expériences utilisateur exceptionnelles. Mon objectif est de contribuer au monde de la technologie en repoussant les limites de ce qui est possible.",
+  "linkedin": "https://www.linkedin.com/in/johndoe",
+  "github": "https://github.com/johndoe",
+  "email": "johndoe@example.com"
+}
+###
+
+DELETE  http://localhost:3000/moi/1
+Content-Type: application/json
+Authorization :  Bearer {{AccsToken}}
+###

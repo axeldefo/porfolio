@@ -33,7 +33,7 @@ exports.createCompetence = async (req, res) => {
 exports.updateCompetence = async (req, res) => {
   try {
     debug('Updating competence');
-    const { num } = req.params;
+    const { num } = req.body;
     const competence = await comp.findOneAndUpdate({ num }, req.body, { new: true });
     res.status(200).json(competence);
     debug('Competence updated successfully');
@@ -48,9 +48,9 @@ exports.deleteCompetence = async (req, res) => {
   try {
     debug('Deleting competence');
     const { num } = req.params;
-    await comp.deleteOne({ num });
-    res.status(200).json({ message: 'Competence deleted successfully' });
-    debug('Competence deleted successfully');
+    const result = await comp.deleteOne({ num });
+    res.status(200).json({ message: result });
+    debug(result);
   } catch (error) {
     debug('Error deleting competence:', error);
     res.status(500).json({ error: 'Error deleting competence' });

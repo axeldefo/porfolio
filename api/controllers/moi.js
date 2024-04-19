@@ -51,7 +51,7 @@ exports.createMoi = async (req, res) => {
 exports.updateMoi = async (req, res) => {
   try {
     debug('Updating moi');
-    const { num } = req.params;
+    const { num } = req.body;
     const moi = await moiSchema.findOneAndUpdate({ num }, req.body, { new: true });
     res.status(200).json(moi);
     debug('Moi updated successfully');
@@ -67,9 +67,9 @@ exports.deleteMoi = async (req, res) => {
   try {
     debug('Deleting moi');
     const { num } = req.params;
-    await moiSchema.deleteOne({ num});
-    res.status(200).json({ message: 'Moi deleted successfully' });
-    debug('Moi deleted successfully');
+    const result = await moiSchema.deleteOne({ num});
+    res.status(200).json({ message: result });
+    debug(result);
   }
   catch (error) {
     debug('Error deleting moi:', error);

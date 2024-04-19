@@ -8,9 +8,14 @@ const compRouter = require('./api/routes/competences.js');
 const parcoursRouter = require('./api/routes/parcours.js');
 const projetsRouter = require('./api/routes/projets.js');
 const moiRouter = require('./api/routes/moi.js');
+const cors = require('cors');
 const PORT = process.env.PORT;
 
 app.use(express.json());
+app.use(express.urlencoded());
+app.use(cors({
+  origin: 'http://localhost:3000' // or '*' for any origin
+}));
 app.use(helmet());
 app.use('/auth', authRouter);
 app.use('/competences', compRouter);

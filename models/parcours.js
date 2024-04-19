@@ -14,11 +14,11 @@ const ParcoursSchema = new mongoose.Schema({
     unique: true
   },
   dateDebut: {
-    type: Date,
+    type: String,
     required: true
   },
   dateFin: {
-    type: Date,
+    type: String,
     required: true
   },
   titre: {
@@ -29,6 +29,10 @@ const ParcoursSchema = new mongoose.Schema({
     type: String,
     required: true,
     maxlength: 150
+  },
+  entreprise: {
+    type: String,
+    required: true
   },
   lieu: {
     type: String,

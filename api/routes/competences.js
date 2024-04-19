@@ -4,11 +4,11 @@ const authWithJWT = require('../middlewares/authWithToken.js');
 const competences = require('../controllers/competences.js');
 
 router.route('/')
-  .get(authWithJWT, competences.getCompetences)
+  .get( competences.getCompetences)
+  .put(authWithJWT, competences.updateCompetence)
   .post(authWithJWT, competences.createCompetence);
 
 router.route('/:num')
-  .put(authWithJWT, competences.updateCompetence)
   .delete(authWithJWT, competences.deleteCompetence);
 
 module.exports = router;

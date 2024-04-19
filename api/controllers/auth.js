@@ -47,10 +47,12 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
   try {
+    console.log(req.body);
     const { email, password } = req.body;
     debug('Attempting login for user: ', email);
     const user = await users.findOne({ email });
 
+    console.log('on est ici');
     if (!user || !authenticate(password, user)) {
       debug('Invalid credentials');
       return res.status(401).json({ error: 'Invalid credentials' });
@@ -118,3 +120,4 @@ exports.profile = async (req, res) => {
     res.status(404).json({ error: 'User not found' });
   }
 };
+

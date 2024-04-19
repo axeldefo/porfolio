@@ -19,7 +19,9 @@ exports.getParcoursByNum = async (req, res) => {
   try {
     debug('Fetching parcours');
     const { num } = req.params;
+    console.log(num);
     const parcours = await parcoursSchema.findOne({ num });
+    console.log(parcours);
     if (parcours) {
       res.status(200).json(parcours);
       debug('Parcours fetched successfully');
@@ -54,7 +56,7 @@ exports.updateParcours = async (req, res) => {
     const { num } = req.body;
     const parcours = await parcoursSchema.findOneAndUpdate ({ num }, req.body, { new: true });
     res.status(200).json(parcours);
-    debug('Parcours updated successfully');
+    debug(parcours);
   } catch (error) {
     debug('Error updating parcours:', error);
     res.status(500).json({ error: 'Error updating parcours' });
@@ -66,9 +68,9 @@ exports.deleteParcours = async (req, res) => {
   try {
     debug('Deleting parcours');
     const { num } = req.params;
-    await parcoursSchema.deleteOne({ num });
-    res.status(200).json({ message: 'Parcours deleted successfully' });
-    debug('Parcours deleted successfully');
+    const result = await parcoursSchema.deleteOne({ num });
+    res.status(200).json({ message: result });
+    debug(result);
   } catch (error) {
     debug('Error deleting parcours:', error);
     res.status(500).json({ error: 'Error deleting parcours' });

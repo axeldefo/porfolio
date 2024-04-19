@@ -39,6 +39,10 @@ const projetsSchema = new mongoose.Schema({
     type: [String],
     required: true
   },
+  annee: {
+    type: Number,
+    required: true
+  },
   pourcentage: {
     type: Number,
     min: 0,
