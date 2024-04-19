@@ -79,5 +79,18 @@ DELETE http://localhost:3000/projets/1
 Content-Type: application/json
 Authorization :  Bearer {{AccsToken}}
 
+###
 #Parcours
 
+GET http://localhost:3000/parcours
+Content-Type: application/json
+Authorization :  Bearer {{AccsToken}}
+###
+
+POST http://localhost:3000/parcours
+Content-Type: application/json
+Authorization :  Bearer {{AccsToken}}
+
+{
+  
+}
