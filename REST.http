@@ -1,5 +1,5 @@
 #Authentification
-@AccsToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzEzNTE0MTA2LCJleHAiOjE3MTM1MTc3MDZ9.6MnD28HaRwkDitHY7sszXuemZUOZcaWdO6Il1VNnOAg
+@AccsToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzEzNTYwOTIxLCJleHAiOjE3MTM1NjQ1MjF9.IN5mnv0eDNcR8ZktIRzGZAxALHEkaQQCxsA-1b7adFA
 
 POST http://localhost:3000/auth/register
 Content-Type: application/json

@@ -6,7 +6,7 @@ const debug = require('debug')('Authentication:');
 
 function generateAccessToken(user) {
   debug('Generating access token: ', user.email);
-  return jwt.sign({ name: user.name, email: user.email }, process.env.ACCESS_SECRET, { expiresIn: '1h' });
+  return jwt.sign({ name: user.name, email: user.email }, process.env.ACCESS_SECRET, { expiresIn: process.env.ACCESS_EXPIRY });
 }
 
 function generateRefreshToken(user) {
