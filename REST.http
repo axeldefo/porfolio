@@ -1,12 +1,13 @@
 #Authentification
-@AccsToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzEzNTYwOTIxLCJleHAiOjE3MTM1NjQ1MjF9.IN5mnv0eDNcR8ZktIRzGZAxALHEkaQQCxsA-1b7adFA
-
+@AccsToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF4ZWxkZWZvMjJAZ21haWwuY29tIiwiaWF0IjoxNzE1MTI5MTM0LCJleHAiOjE3MTk0NDkxMzR9.e2sm-GBMbceJETPND_F1qtKS_iKWoKR1ozjskxWvKbQ
+# Utilisateurs
 POST http://localhost:3000/auth/register
 Content-Type: application/json
+Authorization: Bearer {{AccsToken}}
 
   {
-    "nom": "John Doe",
-    "email": "john.doe@example.com",
+    "nom": "Axel DEFO",
+    "email": "axeldefo22@gmail.com",
     "password": "password123"
   }
 ###
@@ -15,8 +16,21 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-  "email": "john.doe@example.com",
+  "email": "axeldefo22@gmail.com",
   "password": "password123"
+}
+###
+
+PUT http://localhost:3000/auth/update
+Content-Type: application/json
+Authorization : Bearer {{AccsToken}}
+
+{
+  "ancienEmail": "jaxel.defo22@gmail.com",
+  "ancienPassword": "password123",
+  "nom": "Axel Defo",
+  "email": "axeldefo22@gmail.com",
+  "password": "password456"
 }
 ###
 
@@ -62,9 +76,9 @@ Content-Type: application/json
 Authorization : Bearer {{AccsToken}}
 
 {
-  "num": 3,
+  "num": 6,
   "titre": "Application de gestion de tâches",
-  "descriptionIntro": "Une application web pour la gestion efficace des tâches quotidiennes.",
+  "descriptionIntro": "Une application web pour la gestion efficace des tâches quotidiennes.Une application web pour la gestion efficace des tâches quotidiennes.Une application web pour la gestion efficace des tâches quotidiennes.",
   "descriptionComplete": "Cette application permet aux utilisateurs de créer, organiser et suivre leurs tâches quotidiennes de manière simple et efficace.",
   "motsCles": ["gestion de tâches", "productivité", "web"],
   "thumbnail": "https://img.freepik.com/free-vector/crowdfunding-app-mobile-phone-interface_23-2148620928.jpg?t=st=1713397595~exp=1713401195~hmac=8964494f1be8c1648c6ba43f1e8a537d439e0d49272445aa0278f9b8ead7b7b1&w=826",
@@ -123,16 +137,16 @@ Authorization :  Bearer {{AccsToken}}
 {
   "num": 1,
   "dateDebut": "2022",
-  "dateFin": "2024",
-  "titre": "Développeur Web Full-stack",
-  "description": "Formation intensive en développement web full-stack, incluant JavaScript, Node.js, React, et MongoDB.",
-  "entreprise" : "world",
-  "lieu": "École de Développement Web",
-  "type": "Formation",
+  "dateFin": "En cours",
+  "titre": "Développeur Web Full-sta",
+  "description": "Formation intensive en développement web full-stack, incluant JavaScript, Node.js, React, et MongoDB. Le programme comprend des projets pratiques, des ateliers, et des sessions de mentorat pour aider les étudiants à acquérir les compétences nécessaires pour réussir dans l'industrie du développement web.",
+  "entreprise" : "WorldAssing",
+  "lieu": "Le Mans, France",
+  "type": "Alternance",
   "acquis": [
-    { "nom": "Maîtrise de Rien du tout" },
-    { "nom": "Connaissance approfondie de React" },
-    { "nom": "Expérience avec MongoDB" }
+    { "nom": "JavaScript" },
+    { "nom": "React" },
+    { "nom": "MongoDB" }
   ],
   "logo": "https://example.com/logo.png"
 }
@@ -201,12 +215,12 @@ Content-Type: application/json
 Authorization :  Bearer {{AccsToken}}
 
 {
-  "nom": "John Doe",
+  "nom": "Axel DEFO",
   "salutation": "Développeur Fullstack",
   "description": "Passionné par le développement web et les technologies émergentes.",
-  "linkedin": "https://www.linkedin.com/in/johndoe",
-  "github": "https://github.com/johndoe",
-  "email": "johndoe@example.com"
+  "linkedin": "https://www.linkedin.com/in/axel-defo-mbobda",
+  "github": "https://github.com/axeldefo",
+  "email": "axeldefo22@gmail.com"
 }
 ###
 
@@ -216,12 +230,12 @@ Authorization :  Bearer {{AccsToken}}
 
 {
   "num":1,
-  "nom": "John Doe",
+  "nom": "Axel DEFO",
   "salutation": "Elève ingénieur en informatique",
   "description": "Passionné par le développement, le design et les technologies émergentes, je suis constamment à la recherche de nouvelles façons d'innover et de créer des expériences utilisateur exceptionnelles. Mon objectif est de contribuer au monde de la technologie en repoussant les limites de ce qui est possible.",
-  "linkedin": "https://www.linkedin.com/in/johndoe",
-  "github": "https://github.com/johndoe",
-  "email": "johndoe@example.com"
+  "linkedin": "https://www.linkedin.com/in/axel-defo-mbobda",
+  "github": "https://github.com/axeldefo",
+  "email": "axeldefo22@gmail.com"
 }
 ###
 

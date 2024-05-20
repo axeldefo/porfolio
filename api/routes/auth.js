@@ -5,10 +5,10 @@ var authWithToken = require('../middlewares/authWithToken.js');
 
 
 //authentification
-router.post('/register', auth.register);
+router.post('/register',  auth.register);
 router.post('/login', auth.login);
 router.get('/logout', auth.logout);
-
+router.put('/update', authWithToken, auth.update);
 //profile
 router.get('/profile', authWithToken, auth.profile);
 

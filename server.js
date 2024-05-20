@@ -9,7 +9,7 @@ const parcoursRouter = require('./api/routes/parcours.js');
 const projetsRouter = require('./api/routes/projets.js');
 const moiRouter = require('./api/routes/moi.js');
 const cors = require('cors');
-const PORT = process.env.PORT;
+
 
 app.use(express.json());
 app.use(express.urlencoded());

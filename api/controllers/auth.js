@@ -121,3 +121,32 @@ exports.profile = async (req, res) => {
   }
 };
 
+exports.update = async (req, res) => {
+  try {
+    const { ancienEmail, ancienPassword, nom, email, password } = req.body;
+    debug('Checking if user exists');
+    const existingUser = await users.findOne({ email: ancienEmail});
+
+    if (!existingUser || !authenticate(ancienPassword, existingUser)) {
+      console.log(existingUser);
+      debug('Invalid credentials');
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+
+    debug('Updating user');
+    const salt = await bcrypt.genSalt(parseInt(process.env.ROUND) ?? 0);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    const updatedUser = await users.findOneAndUpdate({ email: ancienEmail }, { nom, email, password: hashedPassword }, { new: true });
+    if (updatedUser) {
+      debug('User updated successfully');
+      return res.status(200).json({ message: 'User updated successfully' });
+    } else {
+      debug('User not found');
+      return res.status(404).json({ error: 'User not found' });
+    }
+  }
+  catch (error) {
+    debug('Update failed:', error);
+    return res.status(500).json({ error: 'Update failed' });
+  }
+};
